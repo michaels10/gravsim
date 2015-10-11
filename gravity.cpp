@@ -1,5 +1,6 @@
 #include "SFML/graphics.hpp"
 #include <cmath>
+#include "gravity.h"
 
 using sf::Event;
 using sf::Vector2f;
@@ -12,16 +13,9 @@ const int SCROLL_AMOUNT = 5;
 const float KEY_ZOOM = 1.0;
 
 int graphicsLoop(const terrain* map) {
-    image.create(map->h_map[0].size(), map->h_map.size());:
-    sf::Texture texture;
-    texture.loadFromImage(image);
-    sf::Sprite sprite(texture);
     Event event;
     bool drag = false;
     Vector2f refCrsrCoords(-1, -1);
-    
-    image = renderMap(map, image);
-    texture.loadFromImage(image);
     
     while(window.isOpen()){
         while (window.pollEvent(event)) {
